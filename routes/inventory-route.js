@@ -10,7 +10,7 @@ module.exports = router => {
     .get(bodyParser, (req, res) => {
         console.log(req.params.search,'params search')
         tools.urlParser(req.params.search)
-        .then(data => Block.find(data))
+        .then(data => Transaction.find(data))
         .then(data => res.send(data))
         .catch(err => console.error(err));
       // router.socketServer.emit('UPDATE_CHAIN', req.body);
