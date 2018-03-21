@@ -9,7 +9,7 @@ module.exports = router => {
     .post(bodyParser, (req, res) => {
       console.log('Second Backend Hit');
       console.log('Req Body', req.body);
-       
+       let block = req.body;
         block.transactions.map(ele => {
           let transactionSchema = Transaction({
             'blockNumber': ele.blockNumber,
