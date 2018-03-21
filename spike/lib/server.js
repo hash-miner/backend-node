@@ -6,6 +6,7 @@ const app = express();
 const router = express.Router();
 const httpServer = require('http').Server(app);
 const cors = require('cors');
+const mongoose = require('mongoose')
 // ----------- Environments -----------
 
 const PORT = process.env.PORT;
@@ -33,6 +34,7 @@ server.start = () => {
     server.http = httpServer.listen(PORT, () => {
       console.log(`Listening on ${PORT}`);
       server.isOn = true;
+      mongoose.connect(MONGODB_URI);
       return resolve(server);
     });
   });
@@ -44,6 +46,7 @@ server.stop = () => {
     server.http.close(() => {
       console.log(`Stopping Server`);
       server.isOn = false;
+      mongoose.disconnect();
       return resolve(server);
     });
   });
