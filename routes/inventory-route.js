@@ -11,8 +11,9 @@ module.exports = router => {
  
        console.log(req.params.search,'params search')
         console.log(tools.urlParser)
-        let stuff = tools.urlParser(req.params.search)
-        
+        let search = `?${req.params.search}`
+        let stuff = tools.urlParser(search)
+        console.log(stuff)
         Transaction.find(stuff)
         .then(data => res.send(data))
         .catch(err => console.error(err));
