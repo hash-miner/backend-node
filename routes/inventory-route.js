@@ -5,7 +5,7 @@ const Block = require('../models/block');
 const Transaction = require('../models/transaction');
 const tools = require('../lib/tools')
 
-module.exports = router => {
+module.exports = router => {  
   router.route('/inventory/:search?')
     .get(bodyParser, (req, res) => {
        console.log(req.params.search,'params search')
